@@ -1,0 +1,452 @@
+html, body{
+    height: 100%;
+    background-color: #cce1fc;
+    display: flex;
+    flex-direction: column;
+}
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial;
+}
+#error{
+    background-color: black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color: red;
+    text-align: center;
+}
+header{
+    width: 100%;
+    position: fixed;
+    background-color: rgb(77, 151, 255);
+    display: flex;
+}
+.game-buttons{
+    text-align: center;
+    margin: 10px;
+    width: 100%;
+}
+.game-button{
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    height: 30px;
+    width: 30px;
+}
+.editor{
+    padding-top: 54px;
+    min-height: 700px;
+    height: 100%;
+    display: flex;
+}
+.left{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    min-width: 600px;
+}
+.tabs{
+    margin-top: 10px;
+    height: 44px;
+}
+.tabs ul{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.tab{
+    display: inline-block;
+    height: 100%;
+}
+.tab button{
+    height: 100%;
+    margin: 0;
+    padding: 2px 20px 0;
+    border: solid #bbbbbb 2px;
+    border-bottom: none;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.unselected{
+    color: #575e75bf;
+    background-color: #d9e3f2;
+}
+.unselected img{
+    filter: grayscale(100%);
+}
+.unselected:hover{
+    background-color: #e5f0ff;
+}
+.selected{
+    color: #4C97FF;
+    background-color: #ffffff;
+}
+.fa-cube{
+    transform: translateY(2px);
+}
+.tab-img{
+    font-size: 15px;
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+}
+.scene-buttons{
+    margin: 10px;
+    margin-left: 30px;
+}
+.scene-button{
+    border-radius: 0;
+    margin: 0;
+    padding: 2px;
+    border: solid #bbbbbb 2px;
+    width: 35px;
+    height: 35px;
+}
+#move, #undo, #three{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#scale, #redo, #ui{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.scene-button img{
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+.editor-div{
+    border-top: solid #bbbbbb 2px;
+    border-right: solid #bbbbbb 2px;
+    overflow: hidden;
+    border-top-right-radius: 10px;
+    min-width: 400px;
+    height: 100%;
+    background-color: white;
+}
+.playground_wrapper_27Lh0{
+    display: flex;
+    flex-direction: column;
+}
+.right{
+    height: 100%;
+    width: 620px;
+    display: flex;
+    flex-direction: column;
+}
+#scene-canvas{
+    outline: none;
+    margin: 20px;
+    margin-top: 0;
+    border: solid #bbbbbb 2px;
+    border-radius: 10px;
+}
+.bottom{
+    background-color: white;
+    padding: 10px;
+    margin-left: 20px;
+    border-top: solid #bbbbbb 2px;
+    border-left: solid #bbbbbb 2px;
+    border-top-left-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.inputs-div{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+.input-div{
+    margin: 5px;
+}
+.input-number{
+    width: 50px;
+}
+button{
+    outline: none;
+    cursor: pointer;
+}
+input{
+    outline: none;
+    border: solid #bbbbbb 2px;
+    height: 20px;
+    border-radius: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+input:hover{
+    border-color: #7eaffc;
+}
+input[type=checkbox]{
+    padding: 0;
+    height: auto;
+    border: none;
+}
+.hierarchy-container{
+    display: flex;
+    height: 100%;
+}
+#hierarchy-context-menu{
+    width: 200px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    border: solid #bbbbbb 1px;
+}
+.context-button{
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    border-radius: 0px;
+    width: 100%;
+}
+.context-button:hover{
+    background-color: rgb(77, 151, 255);
+}
+.hierarchy-div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.objects-div{
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.object-button{
+    margin: 20px;
+    border-radius: 5px;
+    background-color: white;
+    border: solid #bbbbbb 2px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+}
+.active{
+    border-color: rgb(77, 151, 255);
+}
+.object-button-name{
+    height: 16px;
+    padding: 2px;
+    font-size: 12px;
+    background-color: rgb(77, 151, 255);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    align-items: center;
+    color: white;
+}
+.object-delete-img{
+    width: 100%;
+    height: 100%;
+}
+.object-delete-img img{
+    width: 100%;
+    height: 40px;
+}
+.object-delete-button{
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    transform: translate(46px, -12px);
+    background-color: rgb(77, 151, 255);
+    border-radius: 50%;
+    border: none;
+}
+.object-delete-button img{
+    margin: 4px;
+}
+.add-menu-mask{
+    overflow: hidden;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    margin-left: -62px;
+    margin-bottom: 50px;
+}
+.add-menu{
+    padding-bottom: 10px;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: rgb(77, 151, 255);
+    transform: translateY(120px);
+    transition: all 0.3s ease-out;
+}
+.visible{
+    transform: none;
+}
+.add-menu-text{
+    display: none;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    background-color: rgb(15, 189, 140);
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+.add-menu-text::after{
+    position: absolute;
+    content: "";
+    background-color: rgb(15, 189, 140);
+    margin-top: -4px;
+    top: 50%;
+    right: -6px;
+    border-top: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 0;
+    border-left: 0;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+}
+.add-menu button{
+    padding: 6px;
+    background-color: transparent;
+    border: none;
+}
+.add-menu button:hover{
+    background-color: rgb(15, 189, 140);
+}
+.add-menu-img{
+    width: 20px;
+    height: 20px;
+}
+.add-div{
+    text-align: right;
+}
+.add-button{
+    margin: 10px;
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-80px);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 100%;
+    background-color: rgb(77, 151, 255);
+    transition: all 0.3s ease-out;
+}
+.add-button:hover{
+    background-color: rgb(15, 189, 140);
+    transform: scale(1.1) translateX(-75px);
+}
+.add-img{
+    vertical-align: top;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+}
+.fa-plus{
+    color: black;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(-10px, 10px);
+}
+.library{
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(233, 241, 252);
+}
+.library-header{
+    position: fixed;
+    width: 100%;
+}
+.library-header-top{
+    background-color: rgb(77, 151, 255);
+}
+.library-return-button{
+    padding: 10px;
+    color: white;
+    background: transparent;
+    border: none;
+}
+.library-return-button img{
+    vertical-align: middle;
+}
+.library-header-center-div{
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.library-header-filter{
+    padding: 10px;
+    background-color: #cce1fc;
+}
+.library-search-input{
+    margin-right: 10px;
+    padding: 10px;
+    padding-left: 40px;
+    border-radius: 20px;
+    border: none;
+}
+.library-search-img{
+    position: absolute;
+    margin: 13px;
+    vertical-align: middle;
+}
+.library-filter-button{
+    margin-left: 10px;
+    padding: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(77, 151, 255);
+}
+.active-filter{
+    background-color: rgb(255, 140, 26);
+}
+.library-content{
+    padding: 10px;
+    padding-top: 110px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    background-color: rgb(233, 241, 252);
+}
+.library-content-button{
+    font-size: 18px;
+    margin: 10px;
+    padding: 20px;
+    color: #777777;
+    background-color: white;
+    border: solid #bbbbbb 2px;
+    border-radius: 10px;
+    width: 150px;
+}
+.library-content-button img{
+    width: 100%;
+}

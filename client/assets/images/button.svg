@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2817"
+   sodipodi:docname="html-simple-button.svg"
+   viewBox="0 0 120 120"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   width="100%"
+   height="100%">
+  <defs
+     id="defs3024" />
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="800"
+     pagecolor="#ffffff"
+     inkscape:window-height="1045"
+     inkscape:window-maximized="1"
+     inkscape:zoom="5.6"
+     inkscape:window-x="0"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="capa1"
+     inkscape:cx="52.851248"
+     inkscape:cy="63.402179"
+     inkscape:window-width="1920"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px">
+    <inkscape:grid
+       id="grid2827"
+       enabled="true"
+       visible="true"
+       snapvisiblegridlinesonly="true"
+       type="xygrid"
+       empspacing="5" />
+  </sodipodi:namedview>
+  <g
+     id="capa1"
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     transform="translate(-159.5,-172.86)">
+    <rect
+       id="rect2829"
+       style="fill:none;stroke:#000000;stroke-width:1.14099908"
+       ry="6.596108"
+       height="31.055784"
+       width="104.14488"
+       y="217.33211"
+       x="167.42755" />
+    <g
+       style="font-size:12px;fill:#000000;font-family:Bitstream Vera Sans"
+       id="text2852"
+       transform="matrix(1.4754744,0,0,1.4754744,-68.486042,-182.89032)">
+      <path
+         d="m 177.21848,282.25586 0,3.20508 1.89843,0 c 0.63672,0 1.10742,-0.13086 1.41211,-0.39258 0.30859,-0.26562 0.46289,-0.66992 0.46289,-1.21289 0,-0.54687 -0.1543,-0.94922 -0.46289,-1.20703 -0.30469,-0.26172 -0.77539,-0.39258 -1.41211,-0.39258 l -1.89843,0 m 0,-3.59766 0,2.63672 1.75195,0 c 0.57812,1e-5 1.00781,-0.10741 1.28906,-0.32226 0.28515,-0.21875 0.42773,-0.55078 0.42774,-0.9961 -1e-5,-0.4414 -0.14259,-0.77147 -0.42774,-0.99023 -0.28125,-0.21874 -0.71094,-0.32812 -1.28906,-0.32813 l -1.75195,0 m -1.1836,-0.97265 3.02344,0 c 0.90234,1e-5 1.59765,0.18751 2.08594,0.5625 0.48827,0.375 0.73241,0.90821 0.73242,1.59961 -1e-5,0.53516 -0.12501,0.96094 -0.375,1.27734 -0.25001,0.31641 -0.6172,0.51368 -1.10156,0.5918 0.58202,0.125 1.03319,0.38672 1.35351,0.78515 0.32421,0.39454 0.48632,0.88868 0.48633,1.48242 -1e-5,0.78126 -0.26563,1.38477 -0.79688,1.81055 -0.53125,0.42578 -1.28711,0.63867 -2.26757,0.63867 l -3.14063,0 0,-8.74804"
+         id="path3027"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 184.10324,283.84375 0,-3.97266 1.07813,0 0,3.93164 c -10e-6,0.6211 0.12109,1.0879 0.36328,1.40039 0.24218,0.3086 0.60546,0.4629 1.08984,0.4629 0.58203,0 1.04101,-0.18555 1.37695,-0.55665 0.33984,-0.37109 0.50976,-0.87695 0.50977,-1.51757 l 0,-3.72071 1.07812,0 0,6.5625 -1.07812,0 0,-1.00781 c -0.26172,0.39844 -0.56641,0.69531 -0.91406,0.89063 -0.34376,0.1914 -0.74415,0.28711 -1.20117,0.28711 -0.75391,0 -1.32618,-0.23438 -1.7168,-0.70313 -0.39063,-0.46875 -0.58594,-1.15429 -0.58594,-2.05664 m 2.71289,-4.13086 0,0"
+         id="path3029"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 192.89816,278.00781 0,1.86328 2.22071,0 0,0.83789 -2.22071,0 0,3.5625 c 0,0.53516 0.0723,0.87891 0.2168,1.03125 0.14843,0.15235 0.44726,0.22852 0.89648,0.22852 l 1.10743,0 0,0.90234 -1.10743,0 c -0.83203,0 -1.40625,-0.15429 -1.72265,-0.46289 -0.31641,-0.3125 -0.47461,-0.8789 -0.47461,-1.69922 l 0,-3.5625 -0.79102,0 0,-0.83789 0.79102,0 0,-1.86328 1.08398,0"
+         id="path3031"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 197.6091,278.00781 0,1.86328 2.2207,0 0,0.83789 -2.2207,0 0,3.5625 c 0,0.53516 0.0723,0.87891 0.2168,1.03125 0.14843,0.15235 0.44726,0.22852 0.89648,0.22852 l 1.10742,0 0,0.90234 -1.10742,0 c -0.83203,0 -1.40625,-0.15429 -1.72265,-0.46289 -0.31641,-0.3125 -0.47462,-0.8789 -0.47461,-1.69922 l 0,-3.5625 -0.79102,0 0,-0.83789 0.79102,0 0,-1.86328 1.08398,0"
+         id="path3033"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 203.7966,280.62695 c -0.57813,10e-6 -1.03516,0.22657 -1.37109,0.67969 -0.33594,0.44922 -0.50391,1.06641 -0.50391,1.85156 0,0.78516 0.16601,1.4043 0.49805,1.85742 0.33593,0.44922 0.79492,0.67383 1.37695,0.67383 0.57421,0 1.02929,-0.22656 1.36523,-0.67968 0.33594,-0.45313 0.50391,-1.07031 0.50391,-1.85157 0,-0.77734 -0.16797,-1.39257 -0.50391,-1.8457 -0.33594,-0.45703 -0.79102,-0.68554 -1.36523,-0.68555 m 0,-0.91406 c 0.9375,10e-6 1.67382,0.30469 2.20898,0.91406 0.53515,0.60938 0.80273,1.45313 0.80274,2.53125 -1e-5,1.07422 -0.26759,1.91797 -0.80274,2.53125 -0.53516,0.60938 -1.27148,0.91407 -2.20898,0.91407 -0.94141,0 -1.67969,-0.30469 -2.21484,-0.91407 -0.53125,-0.61328 -0.79688,-1.45703 -0.79688,-2.53125 0,-1.07812 0.26563,-1.92187 0.79688,-2.53125 0.53515,-0.60937 1.27343,-0.91405 2.21484,-0.91406"
+         id="path3035"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 214.04465,282.47266 0,3.96093 -1.07813,0 0,-3.92578 c 0,-0.62109 -0.1211,-1.08593 -0.36328,-1.39453 -0.24219,-0.30859 -0.60547,-0.46288 -1.08984,-0.46289 -0.58204,10e-6 -1.04102,0.18555 -1.37696,0.55664 -0.33594,0.3711 -0.5039,0.87696 -0.5039,1.51758 l 0,3.70898 -1.08399,0 0,-6.5625 1.08399,0 0,1.01953 c 0.25781,-0.39452 0.56054,-0.68944 0.9082,-0.88476 0.35156,-0.19531 0.75586,-0.29296 1.21289,-0.29297 0.7539,10e-6 1.32421,0.23438 1.71094,0.70313 0.38671,0.46484 0.58007,1.15039 0.58008,2.05664"
+         id="path3037"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+  <metadata
+     id="metadata3022">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title></dc:title>
+        <dc:date>2010-07-20T12:31:10</dc:date>
+        <dc:description />
+        <dc:source>https://openclipart.org/detail/73951/html-simple-button-by-3701</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>3701</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>button</rdf:li>
+            <rdf:li>design</rdf:li>
+            <rdf:li>web</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

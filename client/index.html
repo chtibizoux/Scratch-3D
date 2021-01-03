@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Scratch 3D</title>
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <!-- <link rel="icon" href="assets/images/.png"> -->
+        <meta name="description" content="Scratch in 3D">
+        <meta name="author" content="Clément Songis">
+        <meta name="application-name" content="Scratch 3D">
+        <meta name="theme-color" content="#cce1fc">
+        <meta name="color-scheme" content="only light">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index">
+        <meta name="keywords" content="Scratch,3D">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/740353a2ba.js"></script>
+        <script src="http://mrdoob.github.com/three.js/build/three.min.js"></script>
+        <script src="js/orbitControls.js"></script>
+        <script src="js/transformControls.js"></script>
+        <script src="js/capsuleGeometry.js"></script>
+        <script src="js/blockly_compressed_vertical.js"></script>
+        <script src="js/blocks_compressed.js"></script>
+        <script src="js/blocks_compressed_vertical.js"></script>
+        <script src="js/scratch_msgs.js"></script>
+        <!-- <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="js/scratch-paint.js"></script> -->
+        <script src="js/threejs_editor.js"></script>
+        <script src="js/threejs_scene.js"></script>
+        <script src="js/history.js"></script>
+        <script src="js/javascript_compressed.js"></script>
+		<script src="js/WebGL.js"></script>
+        <script src="js/blocks_javascript.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="game-buttons">
+                <button class="game-button" id="play"><img src="assets/images/play.svg" alt="Play"></button>
+            </div>
+        </header>
+        <section class="editor">
+            <div class="left">
+                <div class="tabs">
+                    <ul>
+                        <li class="tab"><button id="codeEditor-button" class="selected" onclick="codeEditor()"><img src="assets/images/code.svg" alt="Code" class="tab-img"><span> Code</span></button></li>
+                        <li class="tab"><button id="3DEditor-button" class="unselected" onclick="threeEditor()"><i class="fas fa-cube tab-img"></i><span> Editeur 3D</span></button></li>
+                        <li class="tab"><button id="imageEditor-button" class="unselected" onclick="imageEditor()"><img src="assets/images/image.svg" alt="Editeur" class="tab-img"><span> Editeur d'images</span></button></li>
+                        <!-- <li class="tab"><button type="button" name="button" id="soundEditor-button" class="unselected" onclick="soundEditor()"><img src="assets/images/sons.svg" alt="Sons" class="tab-img"><span> Sons</span></button></li> -->
+                    </ul>
+                </div>
+                <div id="blockly-div" class="editor-div"></div>
+                <div id="3DEditor-div" class="editor-div" style="display: none;"><canvas id="3DEditor-canvas" width="576" height="324"></canvas></div>
+                <div id="imageEditor-div" class="editor-div" style="display: none;"></div>
+                <div id="soundEditor-div" class="editor-div" style="display: none;"></div>
+            </div>
+            <div class="right">
+                <div class="scene-buttons">
+                    <button class="scene-button" id="move"><img src="assets/images/move.png" alt="Move"></button><button class="scene-button" id="rotate"><img src="assets/images/rotate.png" alt="Rotate"></button><button class="scene-button" id="scale"><img src="assets/images/scale.png" alt="Scale"></button>
+                    <button class="scene-button" id="undo"><img src="data:image/svg+xml,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='20px' height='20px' viewBox='0 0 20 20' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3Eundo%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='undo' fill='%23000000'%3E %3Cpath d='M15.5581635,12.7700651 L11.8403972,16.4941315 C11.5610922,16.7671364 11.1830854,16.9211391 10.7903784,16.9211391 C10.3990715,16.9211391 10.0210647,16.7671364 9.74035971,16.4941315 L6.02399342,12.7700651 C5.5969858,12.3430574 5.47098355,11.7060461 5.70198767,11.1530362 C5.93299179,10.6000263 6.46500128,10.24302 7.06701202,10.24302 L8.40403587,10.24302 C8.36903525,9.92101423 8.27803362,9.55700774 8.12403088,9.17200087 C8.07573002,9.05999887 8.02602913,8.94799688 7.97002813,8.83599488 C7.89302676,8.70999263 7.90072689,8.67499201 7.79502501,8.52098926 C7.62702201,8.26898476 7.47301926,8.07998139 7.29031601,7.86297752 C6.9200094,7.4639704 6.47200141,7.12096429 5.99599292,6.86895979 C5.5129843,6.6169553 5.00897531,6.46295255 4.56096732,6.37895105 C4.11995945,6.30194968 3.71395221,6.29494955 3.47594796,6.29494955 C3.35694584,6.28794943 3.2029431,6.31594993 3.12594172,6.32295005 C3.04194022,6.32995018 2.99293935,6.3369503 2.99293935,6.3369503 C2.49593048,6.38595117 2.04792249,6.02194468 1.99892162,5.52493582 C1.95692087,5.10492832 2.20192524,4.72692158 2.57293186,4.58691908 C2.57293186,4.58691908 2.62193273,4.56591871 2.6989341,4.53791821 C2.78993573,4.50991771 2.87393723,4.46091684 3.06994072,4.40491584 C3.46194772,4.28591371 3.95895658,4.15991147 4.60996819,4.09691034 C5.25397968,4.04090934 6.03099354,4.05490959 6.85070816,4.22291259 C7.66902276,4.39791571 8.53003812,4.72692158 9.32805235,5.20293007 C9.7060591,5.44793444 10.1120663,5.73493956 10.427072,6.01494456 C10.5670745,6.11994643 10.8050787,6.35795068 10.9450812,6.5049533 C11.1060841,6.67295629 11.2530867,6.84095929 11.4007893,7.01596241 C11.9670994,7.7159749 12.3871069,8.47198839 12.6601118,9.15800062 C12.8211147,9.55000762 12.9331167,9.92101423 13.0171182,10.24302 L14.5151449,10.24302 C15.1171556,10.24302 15.6491651,10.6000263 15.8801692,11.1530362 C16.1111734,11.7060461 15.9851711,12.3430574 15.5581635,12.7700651' id='Fill-1' transform='translate(8.994247, 10.494247) scale(-1, 1) rotate(-45.000000) translate(-8.994247, -10.494247) '%3E%3C/path%3E %3C/g%3E %3C/g%3E %3C/svg%3E" alt="Undo"></button><button class="scene-button" id="redo"><img src="data:image/svg+xml,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='20px' height='20px' viewBox='0 0 20 20' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3Eredo%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='redo' fill='%23000000'%3E %3Cpath d='M17.5581635,12.7700651 L13.8403972,16.4941315 C13.5610922,16.7671364 13.1830854,16.9211391 12.7903784,16.9211391 C12.3990715,16.9211391 12.0210647,16.7671364 11.7403597,16.4941315 L8.02399342,12.7700651 C7.5969858,12.3430574 7.47098355,11.7060461 7.70198767,11.1530362 C7.93299179,10.6000263 8.46500128,10.24302 9.06701202,10.24302 L10.4040359,10.24302 C10.3690352,9.92101423 10.2780336,9.55700774 10.1240309,9.17200087 C10.07573,9.05999887 10.0260291,8.94799688 9.97002813,8.83599488 C9.89302676,8.70999263 9.90072689,8.67499201 9.79502501,8.52098926 C9.62702201,8.26898476 9.47301926,8.07998139 9.29031601,7.86297752 C8.9200094,7.4639704 8.47200141,7.12096429 7.99599292,6.86895979 C7.5129843,6.6169553 7.00897531,6.46295255 6.56096732,6.37895105 C6.11995945,6.30194968 5.71395221,6.29494955 5.47594796,6.29494955 C5.35694584,6.28794943 5.2029431,6.31594993 5.12594172,6.32295005 C5.04194022,6.32995018 4.99293935,6.3369503 4.99293935,6.3369503 C4.49593048,6.38595117 4.04792249,6.02194468 3.99892162,5.52493582 C3.95692087,5.10492832 4.20192524,4.72692158 4.57293186,4.58691908 C4.57293186,4.58691908 4.62193273,4.56591871 4.6989341,4.53791821 C4.78993573,4.50991771 4.87393723,4.46091684 5.06994072,4.40491584 C5.46194772,4.28591371 5.95895658,4.15991147 6.60996819,4.09691034 C7.25397968,4.04090934 8.03099354,4.05490959 8.85070816,4.22291259 C9.66902276,4.39791571 10.5300381,4.72692158 11.3280524,5.20293007 C11.7060591,5.44793444 12.1120663,5.73493956 12.427072,6.01494456 C12.5670745,6.11994643 12.8050787,6.35795068 12.9450812,6.5049533 C13.1060841,6.67295629 13.2530867,6.84095929 13.4007893,7.01596241 C13.9670994,7.7159749 14.3871069,8.47198839 14.6601118,9.15800062 C14.8211147,9.55000762 14.9331167,9.92101423 15.0171182,10.24302 L16.5151449,10.24302 C17.1171556,10.24302 17.6491651,10.6000263 17.8801692,11.1530362 C18.1111734,11.7060461 17.9851711,12.3430574 17.5581635,12.7700651' id='Fill-1' transform='translate(10.994247, 10.494247) rotate(-45.000000) translate(-10.994247, -10.494247) '%3E%3C/path%3E %3C/g%3E %3C/g%3E %3C/svg%3E" alt="Redo"></button>
+                    <button class="scene-button" id="three">3D</button><button class="scene-button" id="ui">UI</button>
+                </div>
+                <canvas id="scene-canvas" width="576" height="324"></canvas>
+                <div class="bottom">
+                    <div class="inspector">
+                        <h4>Inspector</h4>
+                        <div class="inputs-div">
+                            <div class="input-div">
+                                <label for="objectName">Nom: </label>
+                                <input type="text" name="objectName" value="" placeholder="nom" onchange="inputChange('setName')">
+                            </div>
+                            <div class="input-div">
+                                <p>Position</p>
+                                <label for="positionX">X </label>
+                                <input type="number" name="positionX" value="0" class="input-number" onchange="inputChange('setPosition')">
+                                <label for="positionY">Y </label>
+                                <input type="number" name="positionY" value="0" class="input-number" onchange="inputChange('setPosition')">
+                                <label for="positionZ">Z </label>
+                                <input type="number" name="positionZ" value="0" class="input-number" onchange="inputChange('setPosition')">
+                            </div>
+                            <div class="input-div">
+                                <p>Rotation</p>
+                                <label for="rotationX">X </label>
+                                <input type="number" name="rotationX" value="0" class="input-number" onchange="inputChange('setRotation')">
+                                <label for="rotationY">Y </label>
+                                <input type="number" name="rotationY" value="0" class="input-number" onchange="inputChange('setRotation')">
+                                <label for="rotationZ">Z </label>
+                                <input type="number" name="rotationZ" value="0" class="input-number" onchange="inputChange('setRotation')">
+                            </div>
+                            <div class="input-div">
+                                <p>Taille</p>
+                                <label for="scaleX">X </label>
+                                <input type="number" name="scaleX" value="0" class="input-number" onchange="inputChange('setScale')">
+                                <label for="scaleY">Y </label>
+                                <input type="number" name="scaleY" value="0" class="input-number" onchange="inputChange('setScale')">
+                                <label for="scaleZ">Z </label>
+                                <input type="number" name="scaleZ" value="0" class="input-number" onchange="inputChange('setScale')">
+                            </div>
+                            <div class="input-div">
+                                <label for="show">Afficher </label>
+                                <input type="checkbox" name="show" checked onchange="inputChange('setVisible')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hierarchy-container">
+                        <div class="hierarchy-div">
+                            <h4>UI Hierarchy</h4>
+                            <div class="objects-div" id="objects-UI-div"></div>
+                            <div class="add-div">
+                                <div class="add-menu-text" id="add-UI-text-import" style="margin-bottom: 133px;margin-left: -230px;">Importer une image</div>
+                                <div class="add-menu-text" id="add-UI-text-create" style="margin-bottom: 95px;margin-left: -210px;">Créer une image</div>
+                                <div class="add-menu-text" id="add-UI-text-search" style="margin-bottom: 60px;margin-left: -240px;">Chercher un élement</div>
+                                <div class="add-menu-text" id="add-UI-text-default" style="margin-bottom: 15px;margin-left: -255px;">Chercher un élement</div>
+                                <div class="add-menu-mask">
+                                    <div class="add-menu" id="add-UI-menu">
+                                        <button onmouseover="document.getElementById('add-UI-text-import').style.display = 'inline-block';" onmouseout="document.getElementById('add-UI-text-import').style.display = 'none';"><img src="assets/images/inport.svg" alt="" class="add-menu-img"></button>
+                                        <button onmouseover="document.getElementById('add-UI-text-create').style.display = 'inline-block';" onmouseout="document.getElementById('add-UI-text-create').style.display = 'none';"><img src="assets/images/draw.svg" alt="" class="add-menu-img"></button>
+                                        <button onclick="document.getElementById('UI-library').style.display = 'block'" onmouseover="document.getElementById('add-UI-text-search').style.display = 'inline-block';" onmouseout="document.getElementById('add-UI-text-search').style.display = 'none';"><img src="assets/images/search.svg" alt="" class="add-menu-img"></button>
+                                    </div>
+                                </div>
+                                <button class="add-button" id="add-UI-button" onclick="document.getElementById('UI-library').style.display = 'block'" onmouseover="document.getElementById('add-UI-text-default').style.display = 'inline-block';" onmouseout="document.getElementById('add-UI-text-default').style.display = 'none';"><img src="assets/images/user-interface.png" alt="" class="add-img"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="hierarchy-div">
+                            <h4>3D Hierarchy</h4>
+                            <div class="objects-div" id="objects-3D-div"></div>
+                            <div class="add-div">
+                                <div class="add-menu-text" id="add-3D-text-import" style="margin-bottom: 133px;margin-left: -215px;">Importer un objet</div>
+                                <div class="add-menu-text" id="add-3D-text-create" style="margin-bottom: 95px;margin-left: -195px;">Créer un objet</div>
+                                <div class="add-menu-text" id="add-3D-text-search" style="margin-bottom: 60px;margin-left: -220px;">Chercher un objet</div>
+                                <div class="add-menu-text" id="add-3D-text-default" style="margin-bottom: 15px;margin-left: -235px;">Chercher un objet</div>
+                                <div class="add-menu-mask">
+                                    <div class="add-menu" id="add-3D-menu">
+                                        <button onmouseover="document.getElementById('add-3D-text-import').style.display = 'inline-block';" onmouseout="document.getElementById('add-3D-text-import').style.display = 'none';"><img src="assets/images/inport.svg" alt="" class="add-menu-img"></button>
+                                        <button onmouseover="document.getElementById('add-3D-text-create').style.display = 'inline-block';" onmouseout="document.getElementById('add-3D-text-create').style.display = 'none';"><img src="assets/images/draw.svg" alt="" class="add-menu-img"></button>
+                                        <button onclick="document.getElementById('3D-library').style.display = 'block'" onmouseover="document.getElementById('add-3D-text-search').style.display = 'inline-block';" onmouseout="document.getElementById('add-3D-text-search').style.display = 'none';"><img src="assets/images/search.svg" alt="" class="add-menu-img"></button>
+                                    </div>
+                                </div>
+                                <button class="add-button" id="add-3D-button" onclick="document.getElementById('3D-library').style.display = 'block'" onmouseover="document.getElementById('add-3D-text-default').style.display = 'inline-block';" onmouseout="document.getElementById('add-3D-text-default').style.display = 'none';"><i class="fas fa-cube add-img"></i><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div id="hierarchy-context-menu" style="display: none;">
+                            <button class="context-button" id="duplicate">Dupliquer</button>
+                            <button class="context-button" id="delete">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="library" id="UI-library" style="display: none;">
+            <div class="library-header">
+                <div class="library-header-top">
+                    <div class="library-header-center-div">
+                        Choisir un objet
+                    </div>
+                    <button class="library-return-button" onclick="document.getElementById('UI-library').style.display = 'none'"><img src="assets/images/return.svg" alt="retour">Retour</button>
+                </div>
+                <div class="library-header-filter">
+                    <img src="assets/images/library-search.svg" alt="Search" class="library-search-img">
+                    <input class="library-search-input" value="" placeholder="Rechercher">
+                    <button class="library-filter-button active-filter" onclick="">Tout</button>
+                </div>
+            </div>
+            <div class="library-content">
+                <button class="library-content-button" onclick="newObject('2D', 20, 'Button')"><img src="assets/images/button.svg" alt="Button">Bouton</button>
+            </div>
+        </section>
+        <section class="library" id="3D-library" style="display: none;">
+            <div class="library-header">
+                <div class="library-header-top">
+                    <div class="library-header-center-div">
+                        Choisir un objet
+                    </div>
+                    <button class="library-return-button" onclick="document.getElementById('3D-library').style.display = 'none'"><img src="assets/images/return.svg" alt="retour">Retour</button>
+                </div>
+                <div class="library-header-filter">
+                    <img src="assets/images/library-search.svg" alt="Search" class="library-search-img">
+                    <input class="library-search-input" value="" placeholder="Rechercher">
+                    <button class="library-filter-button active-filter" onclick="">Tout</button>
+                </div>
+            </div>
+            <div class="library-content">
+                <button class="library-content-button" onclick="newObject('3D', 1, 'Camera')"><img src="assets/images/camera.svg" alt="Camera">Camera</button>
+                <button class="library-content-button" onclick="newObject('3D', 2, 'Directional light')"><img src="assets/images/light.png" alt="Directional light">Lumière directionelle</button>
+                <button class="library-content-button" onclick="newObject('3D', 3, 'Ambiant light')"><img src="assets/images/light.png" alt="Ambiant light">Lumière ambiante</button>
+                <button class="library-content-button" onclick="newObject('3D', 4, 'Point light')"><img src="assets/images/light.png" alt="Point light">Lumière ponctuelle</button>
+                <button class="library-content-button" onclick="newObject('3D', 5, 'Spot light')"><img src="assets/images/light.png" alt="Spot light">Projecteur</button>
+                <button class="library-content-button" onclick="newObject('3D', 6, 'Hemisphere light')"><img src="assets/images/light.png" alt="Hemisphere light">Lumière hémisphère</button>
+                <button class="library-content-button" onclick="newObject('3D', 7, 'Text')"><img src="assets/images/text.png" alt="Text">Texte 3D</button>
+                <button class="library-content-button" onclick="newObject('3D', 8, 'Plane')"><img src="assets/images/plan.png" alt="Plane">Plan</button>
+                <button class="library-content-button" onclick="newObject('3D', 9, 'Circle')"><img src="assets/images/circle.png" alt="Circle">Cercle</button>
+                <button class="library-content-button" onclick="newObject('3D', 10, 'Ring')"><img src="assets/images/ring.png" alt="Ring">Anneau</button>
+                <button class="library-content-button" onclick="newObject('3D', 11, 'Box')"><img src="assets/images/cube.png" alt="Cube">Cube</button>
+                <button class="library-content-button" onclick="newObject('3D', 12, 'Sphere')"><img src="assets/images/sphere.png" alt="Sphere">Sphere</button>
+                <button class="library-content-button" onclick="newObject('3D', 13, 'Cone')"><img src="assets/images/cone.png" alt="Cone">Cone</button>
+                <button class="library-content-button" onclick="newObject('3D', 14, 'Cylinder')"><img src="assets/images/cylinder.png" alt="Cylinder">Cylindre</button>
+                <button class="library-content-button" onclick="newObject('3D', 15, 'Capsule')"><img src="assets/images/capsule.png" alt="Capsule">Capsule</button>
+                <button class="library-content-button" onclick="newObject('3D', 16, 'Torus')"><img src="assets/images/torus.png" alt="Torus">Torus</button>
+                <button class="library-content-button" onclick="newObject('3D', 17, 'Tube')"><img src="assets/images/tube.png" alt="Tube">Tube</button>
+                <button class="library-content-button" onclick="newObject('3D', 18, 'Octahedron')"><img src="assets/images/octahedron.png" alt="Octahedron">Octaèdre</button>
+                <button class="library-content-button" onclick="newObject('3D', 19, 'Tetrahedron')"><img src="assets/images/tetrahedron.png" alt="Tetrahedron">Tétraèdre</button>
+            </div>
+        </section>
+        <script>
+        // TODO: Finish Blockly Modification and blocks_javascript.js
+        // TODO: Finish 3D Editor
+        // TODO: Finish Paint Editor
+        // TODO: Finish Hierarchy and Inspector
+
+        // TODO: Implément Custom Procedure
+        // TODO: Implément Web Request
+        // TODO: Implément RayCast
+        if (!WEBGL.isWebGLAvailable()) {
+        	const warning = WEBGL.getWebGLErrorMessage();
+        	document.body.innerHTML += '<div id="error">' + warning + '</div>';
+        }
+        Blockly.ScratchMsgs.setLocale("fr");
+        var workspace = Blockly.inject('blockly-div', {
+          comments: true,
+          disable: false,
+          collapse: false,
+          media: 'assets/images/scratch/',
+          readOnly: false,
+          rtl: false,
+          scrollbars: true,
+          toolbox: null,
+          sounds: false,
+          zoom: {
+            controls: true,
+            wheel: true,
+            startScale: 0.675,
+            maxScale: 4,
+            minScale: 0.25,
+            scaleSpeed: 1.1
+          },
+          colours: {
+            fieldShadow: 'rgba(255, 255, 255, 0.3)',
+            dragShadowOpacity: 0.6
+          }
+        });
+        workspace.addChangeListener(Blockly.Events.disableOrphans);
+        function codeUpdate(event) {
+            console.log(Blockly.JavaScript.workspaceToCode(workspace));
+            if (activeObject) {
+                activeObject.js = Blockly.JavaScript.workspaceToCode(workspace);
+                activeObject.xml = Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace));
+            }else {
+                workspace.clear();
+            }
+        }
+        workspace.addChangeListener(codeUpdate);
+        function imageEditorUpdate(image) {
+            console.log(image);
+        }
+        var threeObjectEditor = new ThreeEditor(threeObjectEditorUpdate, "3DEditor-canvas");
+        function threeObjectEditorUpdate() {
+            console.log("threeEditorUpdate");
+        }
+        var threeScene = new ThreeScene(threeSceneUpdate, "scene-canvas");
+        function threeSceneUpdate() {
+            console.log("threeSceneUpdate");
+        }
+        // document.getElementById('play').addEventListener("click", function () {
+        //     try {
+        //         eval(start + code);
+        //     } catch (e) {
+        //         console.log(e);
+        //     }
+        // });
+
+        // Export Code
+        // var xml = Blockly.Xml.workspaceToDom(workspace);
+        // var xml_text = Blockly.Xml.domToText(xml);
+        // Inport Code
+        // var xml = Blockly.Xml.textToDom(xml_text);
+        // Blockly.Xml.domToWorkspace(xml, workspace);
+        </script>
+        <script src="js/ui.js"></script>
+        <script src="js/playground.js"></script>
+        <script src="js/objects_manager.js"></script>
+    </body>
+</html>
