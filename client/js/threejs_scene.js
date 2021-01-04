@@ -139,13 +139,6 @@ class ThreeScene {
         const light = new THREE.AmbientLight(0xFFFFFF, 100);
         light.position.set(-2, 2, 2);
         this.scene.add(light);
-		// const cube = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshBasicMaterial({color: 0x00ff00}));
-		// this.scene.add(cube);
-        // this.objects.push(cube);
-        // Test Transform Controls
-		// this.transformControls.attach(cube);
-		// this.selectionBox.setFromObject(cube);
-		// this.selectionBox.visible = true;
     }
 }
 ThreeScene.prototype.set = function (cmd, object, property) {
