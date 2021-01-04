@@ -108,14 +108,16 @@
                             <h4>UI Hierarchy</h4>
                             <div class="objects-div" id="objects-UI-div"></div>
                             <div class="add-div">
-                                <div class="add-menu-text" id="add-UI-text-import" style="margin-bottom: 133px;margin-left: -230px;">Importer une image</div>
-                                <div class="add-menu-text" id="add-UI-text-create" style="margin-bottom: 95px;margin-left: -210px;">Créer une image</div>
+                                <div class="add-menu-text" id="add-UI-text-import" style="margin-bottom: 160px;margin-left: -230px;">Importer une image</div>
+                                <div class="add-menu-text" id="add-UI-text-create" style="margin-bottom: 125px;margin-left: -210px;">Créer une image</div>
+                                <div class="add-menu-text" id="add-UI-text-group" style="margin-bottom: 92px;margin-left: -208px;">Créer un groupe</div>
                                 <div class="add-menu-text" id="add-UI-text-search" style="margin-bottom: 60px;margin-left: -240px;">Chercher un élement</div>
                                 <div class="add-menu-text" id="add-UI-text-default" style="margin-bottom: 15px;margin-left: -255px;">Chercher un élement</div>
                                 <div class="add-menu-mask">
                                     <div class="add-menu" id="add-UI-menu">
                                         <button onmouseover="document.getElementById('add-UI-text-import').style.display = 'inline-block';" onmouseout="document.getElementById('add-UI-text-import').style.display = 'none';"><img src="assets/images/inport.svg" alt="" class="add-menu-img"></button>
                                         <button onmouseover="document.getElementById('add-UI-text-create').style.display = 'inline-block';" onmouseout="document.getElementById('add-UI-text-create').style.display = 'none';"><img src="assets/images/draw.svg" alt="" class="add-menu-img"></button>
+                                        <button onclick="createGroup()" onmouseover="document.getElementById('add-UI-text-group').style.display = 'inline-block';" onmouseout="document.getElementById('add-UI-text-group').style.display = 'none';"><i class="fas fa-object-group"></i></button>
                                         <button onclick="document.getElementById('UI-library').style.display = 'block'" onmouseover="document.getElementById('add-UI-text-search').style.display = 'inline-block';" onmouseout="document.getElementById('add-UI-text-search').style.display = 'none';"><img src="assets/images/search.svg" alt="" class="add-menu-img"></button>
                                     </div>
                                 </div>
@@ -126,14 +128,16 @@
                             <h4>3D Hierarchy</h4>
                             <div class="objects-div" id="objects-3D-div"></div>
                             <div class="add-div">
-                                <div class="add-menu-text" id="add-3D-text-import" style="margin-bottom: 133px;margin-left: -215px;">Importer un objet</div>
-                                <div class="add-menu-text" id="add-3D-text-create" style="margin-bottom: 95px;margin-left: -195px;">Créer un objet</div>
+                                <div class="add-menu-text" id="add-3D-text-import" style="margin-bottom: 160px;margin-left: -215px;">Importer un objet</div>
+                                <div class="add-menu-text" id="add-3D-text-create" style="margin-bottom: 125px;margin-left: -195px;">Créer un objet</div>
+                                <div class="add-menu-text" id="add-3D-text-group" style="margin-bottom: 92px;margin-left: -208px;">Créer un groupe</div>
                                 <div class="add-menu-text" id="add-3D-text-search" style="margin-bottom: 60px;margin-left: -220px;">Chercher un objet</div>
                                 <div class="add-menu-text" id="add-3D-text-default" style="margin-bottom: 15px;margin-left: -235px;">Chercher un objet</div>
                                 <div class="add-menu-mask">
                                     <div class="add-menu" id="add-3D-menu">
                                         <button onmouseover="document.getElementById('add-3D-text-import').style.display = 'inline-block';" onmouseout="document.getElementById('add-3D-text-import').style.display = 'none';"><img src="assets/images/inport.svg" alt="" class="add-menu-img"></button>
                                         <button onmouseover="document.getElementById('add-3D-text-create').style.display = 'inline-block';" onmouseout="document.getElementById('add-3D-text-create').style.display = 'none';"><img src="assets/images/draw.svg" alt="" class="add-menu-img"></button>
+                                        <button onclick="createGroup()" onmouseover="document.getElementById('add-3D-text-group').style.display = 'inline-block';" onmouseout="document.getElementById('add-3D-text-group').style.display = 'none';"><i class="fas fa-object-group"></i></button>
                                         <button onclick="document.getElementById('3D-library').style.display = 'block'" onmouseover="document.getElementById('add-3D-text-search').style.display = 'inline-block';" onmouseout="document.getElementById('add-3D-text-search').style.display = 'none';"><img src="assets/images/search.svg" alt="" class="add-menu-img"></button>
                                     </div>
                                 </div>
@@ -203,78 +207,70 @@
             </div>
         </section>
         <script>
-        // TODO: Finish Blockly Modification and blocks_javascript.js
-        // TODO: Finish 3D Editor
-        // TODO: Finish Paint Editor
-        // TODO: Finish Hierarchy and Inspector
+            // TODO: Finish Blockly Modification and blocks_javascript.js
+            // TODO: Finish 3D Editor
+            // TODO: Finish Paint Editor
+            // TODO: Finish Hierarchy and Inspector
 
-        // TODO: Implément Custom Procedure
-        // TODO: Implément Web Request
-        // TODO: Implément RayCast
-        if (!WEBGL.isWebGLAvailable()) {
-        	const warning = WEBGL.getWebGLErrorMessage();
-        	document.body.innerHTML += '<div id="error">' + warning + '</div>';
-        }
-        Blockly.ScratchMsgs.setLocale("fr");
-        var workspace = Blockly.inject('blockly-div', {
-          comments: true,
-          disable: false,
-          collapse: false,
-          media: 'assets/images/scratch/',
-          readOnly: false,
-          rtl: false,
-          scrollbars: true,
-          toolbox: null,
-          sounds: false,
-          zoom: {
-            controls: true,
-            wheel: true,
-            startScale: 0.675,
-            maxScale: 4,
-            minScale: 0.25,
-            scaleSpeed: 1.1
-          },
-          colours: {
-            fieldShadow: 'rgba(255, 255, 255, 0.3)',
-            dragShadowOpacity: 0.6
-          }
-        });
-        workspace.addChangeListener(Blockly.Events.disableOrphans);
-        function codeUpdate(event) {
-            console.log(Blockly.JavaScript.workspaceToCode(workspace));
-            if (activeObject) {
-                activeObject.js = Blockly.JavaScript.workspaceToCode(workspace);
-                activeObject.xml = Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace));
-            }else {
-                workspace.clear();
+            // TODO: Implément Custom Procedure
+            // TODO: Implément Web Request
+            // TODO: Implément RayCast
+            if (!WEBGL.isWebGLAvailable()) {
+            	const warning = WEBGL.getWebGLErrorMessage();
+            	document.body.innerHTML += '<div id="error">' + warning + '</div>';
             }
-        }
-        workspace.addChangeListener(codeUpdate);
-        function imageEditorUpdate(image) {
-            console.log(image);
-        }
-        var threeObjectEditor = new ThreeEditor(threeObjectEditorUpdate, "3DEditor-canvas");
-        function threeObjectEditorUpdate() {
-            console.log("threeEditorUpdate");
-        }
-        var threeScene = new ThreeScene(threeSceneUpdate, "scene-canvas");
-        function threeSceneUpdate() {
-            console.log("threeSceneUpdate");
-        }
-        // document.getElementById('play').addEventListener("click", function () {
-        //     try {
-        //         eval(start + code);
-        //     } catch (e) {
-        //         console.log(e);
-        //     }
-        // });
-
-        // Export Code
-        // var xml = Blockly.Xml.workspaceToDom(workspace);
-        // var xml_text = Blockly.Xml.domToText(xml);
-        // Inport Code
-        // var xml = Blockly.Xml.textToDom(xml_text);
-        // Blockly.Xml.domToWorkspace(xml, workspace);
+            Blockly.ScratchMsgs.setLocale("fr");
+            var workspace = Blockly.inject('blockly-div', {
+              comments: true,
+              disable: false,
+              collapse: false,
+              media: 'assets/images/scratch/',
+              readOnly: false,
+              rtl: false,
+              scrollbars: true,
+              toolbox: null,
+              sounds: false,
+              zoom: {
+                controls: true,
+                wheel: true,
+                startScale: 0.675,
+                maxScale: 4,
+                minScale: 0.25,
+                scaleSpeed: 1.1
+              },
+              colours: {
+                fieldShadow: 'rgba(255, 255, 255, 0.3)',
+                dragShadowOpacity: 0.6
+              }
+            });
+            workspace.addChangeListener(Blockly.Events.disableOrphans);
+            function codeUpdate(event) {
+                console.log(Blockly.JavaScript.workspaceToCode(workspace));
+                if (activeObject) {
+                    activeObject.js = Blockly.JavaScript.workspaceToCode(workspace);
+                    activeObject.xml = Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace));
+                }else {
+                    workspace.clear();
+                }
+            }
+            workspace.addChangeListener(codeUpdate);
+            function imageEditorUpdate(image) {
+                console.log(image);
+            }
+            var threeObjectEditor = new ThreeEditor(threeObjectEditorUpdate, "3DEditor-canvas");
+            function threeObjectEditorUpdate() {
+                console.log("threeEditorUpdate");
+            }
+            var threeScene = new ThreeScene(threeSceneUpdate, "scene-canvas");
+            function threeSceneUpdate() {
+                console.log("threeSceneUpdate");
+            }
+            // Export Code
+            // var xml = Blockly.Xml.workspaceToDom(workspace);
+            // var xml_text = Blockly.Xml.domToText(xml);
+            // Inport Code
+            // var xml = Blockly.Xml.textToDom(xml_text);
+            // Blockly.Xml.domToWorkspace(xml, workspace);
         </script>
         <script src="js/ui.js"></script>
         <script src="js/playground.js"></script>

@@ -3,6 +3,7 @@ html, body{
     background-color: #cce1fc;
     display: flex;
     flex-direction: column;
+    max-height: 100%;
 }
 *{
     padding: 0;
@@ -20,6 +21,7 @@ html, body{
     text-align: center;
 }
 header{
+    z-index: 50;
     width: 100%;
     position: fixed;
     background-color: rgb(77, 151, 255);
@@ -289,7 +291,7 @@ input[type=checkbox]{
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     background-color: rgb(77, 151, 255);
-    transform: translateY(120px);
+    transform: translateY(150px);
     transition: all 0.3s ease-out;
 }
 .visible{
@@ -321,6 +323,7 @@ input[type=checkbox]{
     transform: rotate(45deg);
 }
 .add-menu button{
+    color: white;
     padding: 6px;
     background-color: transparent;
     border: none;
