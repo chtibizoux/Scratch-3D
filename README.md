@@ -12,9 +12,10 @@ Later, you can export your project to an executable with the electron and phoneg
 to do:
 
 - Finish Blockly Modification and blocks_javascript.js
-- Finish 3D Editor
 - Implément UI scene editor
 - Finish Hierarchy and Inspector
+- Implément 3D Editor
+- Implément Paint Editor
 - Implément Physic
 - Implément Sounds
 - Implément Animations
