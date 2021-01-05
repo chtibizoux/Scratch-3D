@@ -158,6 +158,44 @@ Blockly.JavaScript['motion_variable'] = function(block) {
     }
     return code;
 };
+Blockly.JavaScript['looks_say'] = function(block) {
+    var message = Blockly.JavaScript.valueToCode(block, 'MESSAGE', Blockly.JavaScript.ORDER_NONE) || "";
+    var color = Blockly.JavaScript.valueToCode(block, 'COLOR', Blockly.JavaScript.ORDER_NONE) || "";
+    var code = "";
+    return code;
+};
+Blockly.JavaScript['looks_show'] = function(block) {
+    return "object.visible = true;\n";
+};
+Blockly.JavaScript['looks_hide'] = function(block) {
+    return "object.visible = false;\n";
+};
+Blockly.JavaScript['looks_backdropcolor'] = function(block) {
+    var color = Blockly.JavaScript.valueToCode(block, 'COLOR', Blockly.JavaScript.ORDER_NONE) || "";
+    return "scene.background = new THREE.Color(" + color.split("'").join("").replace("#", "0x") + ");\n";
+};
+Blockly.JavaScript['looks_changepropertyby'] = function(block) {
+    var property = block.getFieldValue('PROPERTY');
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE) || 0;
+    var code = "";
+    switch (property) {
+        case 'FOV':
+            code = "object.fov = " + value + "\n";
+            break;
+    }
+    return code;
+};
+Blockly.JavaScript['looks_setpropertyto'] = function(block) {
+    var property = block.getFieldValue('PROPERTY');
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE) || 0;
+    var code = "";
+    switch (property) {
+        case 'FOV':
+            code = "object.fov = " + value + "\n";
+            break;
+    }
+    return code;
+};
 
 // Blockly.JavaScript['when_flag'] = function(block) {
 //     var argument0 = Blockly.JavaScript.statementToCode(block, 'DO', Blockly.JavaScript.ORDER_FUNCTION_CALL) || '';
