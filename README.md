@@ -9,7 +9,7 @@ The project is in developpement.
 
 Later, you can export your project to an executable with the electron and phonegap build API.
 
-to do:
+### to do:
 
 - Finish Blockly Modification and blocks_javascript.js
 - Implément UI scene editor
