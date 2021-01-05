@@ -16,6 +16,7 @@ to do:
 - Finish Hierarchy and Inspector
 - Implément 3D Editor
 - Implément Paint Editor
+- Implément Texturing Editor
 - Implément Physic
 - Implément Sounds
 - Implément Animations
