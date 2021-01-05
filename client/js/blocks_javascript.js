@@ -10,6 +10,154 @@ var start = "var isPlaying = true;\nfunction waitFor(conditionFunction) {\n  con
 //     }
 // }
 // console.log(message);
+Blockly.JavaScript['math_angle'] = function(block) {
+    return [block.getFieldValue('NUM'), Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['motion_gotoxyz'] = function(block) {
+    var x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_NONE) || 0;
+    var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_NONE) || 0;
+    var z = Blockly.JavaScript.valueToCode(block, 'Z', Blockly.JavaScript.ORDER_NONE) || 0;
+    return "object.position.set(" + x + ", " + y + ", " + z + ");\n";
+};
+Blockly.JavaScript['motion_objects_menu'] = function(block) {
+    return [block.getFieldValue('TO'), Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['motion_goto'] = function(block) {
+    var to = Blockly.JavaScript.valueToCode(block, 'TO', Blockly.JavaScript.ORDER_NONE) || "none";
+    var code = "object.position.copy((threeScene.scene.getObjectById(" + to + ") || threeScene.scene.getObjectByName('" + to + "')).position);\n";
+    return code;
+};
+Blockly.JavaScript['motion_rotatetoxyz'] = function(block) {
+    var x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_NONE) || 0;
+    var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_NONE) || 0;
+    var z = Blockly.JavaScript.valueToCode(block, 'Z', Blockly.JavaScript.ORDER_NONE) || 0;
+    return "object.rotation.set(" + x + ", " + y + ", " + z + ");\n";
+};
+Blockly.JavaScript['motion_pointtoposition'] = function(block) {
+    var x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_NONE) || 0;
+    var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_NONE) || 0;
+    var z = Blockly.JavaScript.valueToCode(block, 'Z', Blockly.JavaScript.ORDER_NONE) || 0;
+    var code = "object.lookAt(" + x + ", " + y + ", " + z + ");\n";
+    return code;
+};
+Blockly.JavaScript['motion_pointtowards'] = function(block) {
+    var to = Blockly.JavaScript.valueToCode(block, 'TO', Blockly.JavaScript.ORDER_NONE) || "none";
+    var code = "object.lookAt((threeScene.scene.getObjectById(" + to + ") || threeScene.scene.getObjectByName('" + to + "')).position);\n";
+    return code;
+};
+Blockly.JavaScript['motion_scaletoxyz'] = function(block) {
+    var x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_NONE) || 0;
+    var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_NONE) || 0;
+    var z = Blockly.JavaScript.valueToCode(block, 'Z', Blockly.JavaScript.ORDER_NONE) || 0;
+    return "object.scale.set(" + x + ", " + y + ", " + z + ");\n";
+};
+Blockly.JavaScript['motion_variable_menu'] = function(block) {
+    return [block.getFieldValue('VARIABLE'), Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['motion_changeby'] = function(block) {
+    var variable = block.getFieldValue('VARIABLE');
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE) || 0;
+    var code = "";
+    switch (variable) {
+        case 'POSITIONX':
+            code = "object.position.x += " + value + ";\n";
+            break;
+        case 'POSITIONY':
+            code = "object.position.y += " + value + ";\n";
+            break;
+        case 'POSITIONZ':
+            code = "object.position.z += " + value + ";\n";
+            break;
+        case 'ROTATIONX':
+            code = "object.rotation.x += " + value + ";\n";
+            break;
+        case 'ROTATIONY':
+            code = "object.rotation.y += " + value + ";\n";
+            break;
+        case 'ROTATIONZ':
+            code = "object.rotation.z += " + value + ";\n";
+            break;
+        case 'SCALEX':
+            code = "object.scale.x += " + value + ";\n";
+            break;
+        case 'SCALEY':
+            code = "object.scale.y += " + value + ";\n";
+            break;
+        case 'SCALEZ':
+            code = "object.scale.z += " + value + ";\n";
+            break;
+    }
+    return code;
+};
+Blockly.JavaScript['motion_set'] = function(block) {
+    var variable = block.getFieldValue('VARIABLE');
+    var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_NONE) || 0;
+    var code = "";
+    switch (variable) {
+        case 'POSITIONX':
+            code = "object.position.x = " + value + ";\n";
+            break;
+        case 'POSITIONY':
+            code = "object.position.y = " + value + ";\n";
+            break;
+        case 'POSITIONZ':
+            code = "object.position.z = " + value + ";\n";
+            break;
+        case 'ROTATIONX':
+            code = "object.rotation.x = " + value + ";\n";
+            break;
+        case 'ROTATIONY':
+            code = "object.rotation.y = " + value + ";\n";
+            break;
+        case 'ROTATIONZ':
+            code = "object.rotation.z = " + value + ";\n";
+            break;
+        case 'SCALEX':
+            code = "object.scale.x = " + value + ";\n";
+            break;
+        case 'SCALEY':
+            code = "object.scale.y = " + value + ";\n";
+            break;
+        case 'SCALEZ':
+            code = "object.scale.z = " + value + ";\n";
+            break;
+    }
+    return code;
+};
+Blockly.JavaScript['motion_variable'] = function(block) {
+    var variable = block.getFieldValue('VARIABLE');
+    var code = "0";
+    switch (variable) {
+        case 'POSITIONX':
+            code = "object.position.x";
+            break;
+        case 'POSITIONY':
+            code = "object.position.y";
+            break;
+        case 'POSITIONZ':
+            code = "object.position.z";
+            break;
+        case 'ROTATIONX':
+            code = "object.rotation.x";
+            break;
+        case 'ROTATIONY':
+            code = "object.rotation.y";
+            break;
+        case 'ROTATIONZ':
+            code = "object.rotation.z";
+            break;
+        case 'SCALEX':
+            code = "object.scale.x";
+            break;
+        case 'SCALEY':
+            code = "object.scale.y";
+            break;
+        case 'SCALEZ':
+            code = "object.scale.z";
+            break;
+    }
+    return code;
+};
 
 // Blockly.JavaScript['when_flag'] = function(block) {
 //     var argument0 = Blockly.JavaScript.statementToCode(block, 'DO', Blockly.JavaScript.ORDER_FUNCTION_CALL) || '';

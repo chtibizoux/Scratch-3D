@@ -265,9 +265,9 @@ ThreeScene.prototype.addObjectInScene = function (libraryId, id, name, position,
     }
     object.name = name;
     object.objectId = id;
-    object.position.set(position.x, position.y, position.z);
-    object.rotation.set(rotation.x, rotation.y, rotation.z);
-    object.scale.set(scale.x, scale.y, scale.z);
+    object.position.copy(position);
+    object.rotation.copy(rotation);
+    object.scale.copy(scale);
     var helper = this.addHelper(object);
     if (helper !== null) {
         object.helper = helper;

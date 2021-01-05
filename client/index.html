@@ -235,7 +235,8 @@
                 dragShadowOpacity: 0.6
               }
             });
-            workspace.addChangeListener(Blockly.Events.disableOrphans);
+            // TEMP: Blocks test
+            // workspace.addChangeListener(Blockly.Events.disableOrphans);
             function codeUpdate(event) {
                 console.log(Blockly.JavaScript.workspaceToCode(workspace));
                 if (activeObject) {

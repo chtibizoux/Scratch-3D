@@ -19,7 +19,7 @@ function newObject(type, libraryId, name) {
             js: "",
             xml: "",
             position: new THREE.Vector3(0, 0, 0),
-            rotation: new THREE.Vector3(0, 0, 0),
+            rotation: new THREE.Euler(0, 0, 0),
             scale: new THREE.Vector3(1, 1, 1),
             visible: true
         };
@@ -126,9 +126,9 @@ function duplicateObject(id) {
                 type: threeObjects[i].type,
                 js: threeObjects[i].js,
                 xml: threeObjects[i].xml,
-                position: threeObjects[i].position.clone(),
-                rotation: threeObjects[i].rotation.clone(),
-                scale: threeObjects[i].scale.clone()
+                position: threeObjects[i].position,
+                rotation: threeObjects[i].rotation,
+                scale: threeObjects[i].scale
             };
             image = getObjectImage(activeObject);
             document.getElementById('objects-3D-div').innerHTML += '<div class="object-button" id="' + activeObject.id + '" onclick="switchObject(\'' + activeObject.id + '\');"><div class="object-delete-img"><img src="' + image + '" alt=""></div><div class="object-button-name">' + activeObject.name + '</div><button class="object-delete-button" onclick="deleteObject(\'' + activeObject.id + '\');"><img src="assets/images/trash.svg" alt=""></button></div>';
