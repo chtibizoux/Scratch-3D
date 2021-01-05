@@ -8,3 +8,19 @@ Scratch block repository: https://github.com/LLK/scratch-blocks/
 The project is in developpement.
 
 Later, you can export your project to an executable with the electron and phonegap build API.
+
+to do:
+
+- [ Finish Blockly Modification and blocks_javascript.js ]
+- [ Finish 3D Editor ]
+- [ Implément UI scene editor ]
+- [ Finish Hierarchy and Inspector ]
+- [ Implément Physic ]
+- [ Implément Sounds ]
+- [ Implément Animations ]
+- [ Implément Custom Procedure ]
+- [ Implément Web Request ]
+- [ Implément FPS exemple ]
+- [ Implément Simple Multiplayer ]
+- [ Implément Save and Build ]
+- [ Implément auther languages ]
