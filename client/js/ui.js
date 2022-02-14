@@ -143,7 +143,7 @@ function addContext(id) {
         return false;
     });
 }
-function updateContext(id) {
+function updateContext() {
     for (var i = 0; i < threeObjects.length; i++) {
         addContext(threeObjects[i].id);
     }
