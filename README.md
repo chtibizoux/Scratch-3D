@@ -1,6 +1,6 @@
 # Scratch-3D
 
-### The project is in developpement.
+### The project is in developpement.(it's more an unfinished idea)
 
 A 3D engine based on scratch block and WebGL.
 
